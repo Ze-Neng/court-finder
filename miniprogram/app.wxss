@@ -1,0 +1,21 @@
+/* 全局 CSS 变量 — 状态三色 */
+page {
+  --color-status-go: #07c160;       /* 绿色：可前往 */
+  --color-status-caution: #fa9d3b;  /* 橙色：需谨慎 */
+  --color-status-stop: #ee3f3f;     /* 红色：不建议前往 */
+  --color-bg: #f5f5f5;              /* 页面背景 */
+  --color-card: #ffffff;            /* 卡片背景 */
+  --color-text: #333333;            /* 主文字 */
+  --color-text-secondary: #999999;  /* 次要文字 */
+
+  background-color: var(--color-bg);
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  font-size: 28rpx;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+/* 基础 reset */
+view, text, image {
+  box-sizing: border-box;
+}

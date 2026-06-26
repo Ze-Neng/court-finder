@@ -1,0 +1,5 @@
+{
+  "envId": "{{CLOUDBASE_ENV_ID}}",
+  "functionRoot": "./cloudfunctions",
+  "functions": []
+}

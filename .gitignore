@@ -1,0 +1,20 @@
+node_modules/
+miniprogram_npm/
+project.private.config.json
+.env
+.env.local
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*.log
+logs/
+
+# 非代码文件（不上传）
+*.pdf
+Agent.md
+CLAUDE.md
+DEVELOPMENT_PLAN.md
+Vibe Coding.md

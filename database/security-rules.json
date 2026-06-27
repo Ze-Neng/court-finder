@@ -1,0 +1,25 @@
+{
+  "courts": {
+    "read": true,
+    "write": "auth.openid in get('database.admin_whitelist.records')"
+  },
+  "user_submissions": {
+    "read": "doc.openid_hash == auth.openid || auth.openid in get('database.admin_whitelist.records')",
+    "create": "auth != null",
+    "write": "auth.openid in get('database.admin_whitelist.records')"
+  },
+  "favorites": {
+    "read": "doc.openid_hash == auth.openid",
+    "create": "auth != null",
+    "write": "doc.openid_hash == auth.openid"
+  },
+  "events": {
+    "read": "auth.openid in get('database.admin_whitelist.records')",
+    "create": "auth != null",
+    "write": false
+  },
+  "admin_logs": {
+    "read": "auth.openid in get('database.admin_whitelist.records')",
+    "write": false
+  }
+}

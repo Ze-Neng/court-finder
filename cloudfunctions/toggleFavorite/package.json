@@ -1,0 +1,9 @@
+{
+  "name": "toggleFavorite",
+  "version": "1.0.0",
+  "description": "收藏/取消收藏 — 幂等 toggle",
+  "main": "index.ts",
+  "dependencies": {
+    "wx-server-sdk": "latest"
+  }
+}

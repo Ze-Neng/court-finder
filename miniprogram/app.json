@@ -1,6 +1,7 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/court-detail/index"
   ],
   "window": {
     "navigationBarTitleText": "寻觅球场",

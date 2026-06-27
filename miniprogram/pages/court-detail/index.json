@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "navigation-bar": "/components/navigation-bar/index",
+    "status-badge": "/components/status-badge/index",
+    "loading-skeleton": "/components/loading-skeleton/index",
+    "empty-state": "/components/empty-state/index",
+    "error-boundary": "/components/error-boundary/index"
+  }
+}

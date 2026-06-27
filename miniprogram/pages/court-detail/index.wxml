@@ -1,0 +1,104 @@
+<navigation-bar title="球场详情" showBack="{{true}}" />
+
+<!-- 加载 -->
+<block wx:if="{{loading}}">
+  <loading-skeleton type="detail" />
+</block>
+
+<!-- 错误 / 已删除 -->
+<block wx:elif="{{error && !name}}">
+  <empty-state
+    title="{{error}}"
+    icon="📋"
+    description="该球场可能已被删除或不存在"
+  />
+</block>
+
+<!-- 正常 -->
+<block wx:else>
+  <view class="detail-page">
+
+    <!-- ====== 状态看板（首屏） ====== -->
+    <view class="status-board status-{{status}}">
+      <view class="board-top">
+        <status-badge status="{{status}}" />
+        <text class="board-action">{{actionSuggestion}}</text>
+      </view>
+      <view class="board-reason">{{statusReason}}</view>
+      <view class="board-source" wx:if="{{dataSource}}">
+        数据来源：
+        <text wx:if="{{dataSource === 'platform_verified'}}">平台人工核验</text>
+        <text wx:elif="{{dataSource === 'user_verified'}}">用户反馈确认</text>
+        <text wx:else>初始录入</text>
+      </view>
+    </view>
+
+    <!-- ====== 名称 + 地址 ====== -->
+    <view class="info-card">
+      <view class="info-name">{{name}}</view>
+      <view class="info-meta">
+        <text class="info-type">{{sportType}}</text>
+        <text class="info-dist" wx:if="{{distance !== null}}">
+          · 距你 {{distance >= 1000 ? (distance / 1000).toFixed(1) + 'km' : distance + 'm'}}
+        </text>
+      </view>
+      <view class="info-addr">{{address}}</view>
+    </view>
+
+    <!-- ====== 操作按钮 ====== -->
+    <view class="action-buttons">
+      <view class="btn-fav {{isFavorited ? 'favorited' : ''}}" bindtap="onToggleFavorite">
+        <text>{{isFavorited ? '♥' : '♡'}}</text>
+        <text>{{isFavorited ? '已收藏' : '收藏'}}</text>
+      </view>
+      <view class="btn-nav" bindtap="onNavigate">
+        <text>🧭 导航去这里</text>
+      </view>
+    </view>
+
+    <!-- ====== 基础信息 ====== -->
+    <view class="info-section">
+      <view class="section-title">基础信息</view>
+      <view class="info-row" wx:if="{{openingHours}}">
+        <text class="info-label">开放时间</text>
+        <text class="info-value">{{openingHours}}</text>
+      </view>
+      <view class="info-row">
+        <text class="info-label">收费</text>
+        <text class="info-value">
+          <text wx:if="{{feeType === 'free'}}">免费</text>
+          <text wx:elif="{{feeType === 'paid'}}">收费</text>
+          <text wx:else>未知</text>
+        </text>
+      </view>
+      <view class="info-row" wx:if="{{facilities}}">
+        <text class="info-label">设施</text>
+        <text class="info-value">
+          <text wx:if="{{facilities.lighting}}">灯光 </text>
+          <text wx:if="{{facilities.surface}}">{{facilities.surface}} </text>
+          <text wx:if="{{facilities.hoops_or_goals}}">{{facilities.hoops_or_goals}} </text>
+          <text wx:if="{{facilities.toilets}}">公厕 </text>
+        </text>
+      </view>
+    </view>
+
+    <!-- ====== 更新信息 ====== -->
+    <view class="info-section">
+      <view class="info-row" wx:if="{{lastVerifiedAt}}">
+        <text class="info-label">最近核验</text>
+        <text class="info-value">{{lastVerifiedAt}}</text>
+      </view>
+      <view class="info-row" wx:if="{{lastUserReportAt}}">
+        <text class="info-label">最近用户反馈</text>
+        <text class="info-value">{{lastUserReportAt}}</text>
+      </view>
+    </view>
+
+    <!-- ====== 反馈入口 ====== -->
+    <view class="report-entry" bindtap="onReport">
+      <text>信息有误或现场情况变化？</text>
+      <text class="report-link">提交反馈 ›</text>
+    </view>
+
+  </view>
+</block>

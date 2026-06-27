@@ -1,0 +1,168 @@
+.detail-page {
+  padding-bottom: calc(env(safe-area-inset-bottom) + 32rpx);
+}
+
+/* ====== 状态看板 ====== */
+.status-board {
+  margin: 24rpx;
+  padding: 28rpx;
+  border-radius: 16rpx;
+  background: #f9f9f9;
+}
+
+.board-top {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-bottom: 12rpx;
+}
+
+.board-action {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.board-reason {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 8rpx;
+}
+
+.board-source {
+  font-size: 22rpx;
+  color: #999;
+}
+
+/* ====== 信息卡片 ====== */
+.info-card {
+  margin: 0 24rpx 24rpx;
+  padding: 28rpx;
+  background: #fff;
+  border-radius: 16rpx;
+}
+
+.info-name {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.info-meta {
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 8rpx;
+}
+
+.info-type {
+  color: #333;
+}
+
+.info-addr {
+  font-size: 26rpx;
+  color: #999;
+}
+
+/* ====== 操作按钮 ====== */
+.action-buttons {
+  display: flex;
+  margin: 0 24rpx 24rpx;
+  gap: 16rpx;
+}
+
+.btn-fav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 160rpx;
+  height: 96rpx;
+  border-radius: 16rpx;
+  background: #fff;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.btn-fav.favorited {
+  color: #ee3f3f;
+}
+
+.btn-fav text:first-child {
+  font-size: 36rpx;
+  margin-bottom: 4rpx;
+}
+
+.btn-nav {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 96rpx;
+  border-radius: 16rpx;
+  background: #07c160;
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #fff;
+}
+
+/* ====== 信息区块 ====== */
+.info-section {
+  margin: 0 24rpx 24rpx;
+  padding: 24rpx 28rpx;
+  background: #fff;
+  border-radius: 16rpx;
+}
+
+.section-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 12rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  font-size: 26rpx;
+  color: #999;
+  flex-shrink: 0;
+}
+
+.info-value {
+  font-size: 26rpx;
+  color: #333;
+  text-align: right;
+  flex: 1;
+  margin-left: 24rpx;
+}
+
+/* ====== 反馈入口 ====== */
+.report-entry {
+  margin: 0 24rpx;
+  padding: 24rpx 28rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 26rpx;
+  color: #666;
+}
+
+.report-link {
+  color: #07c160;
+  font-weight: 500;
+}

@@ -1,0 +1,9 @@
+{
+  "name": "getCourtDetail",
+  "version": "1.0.0",
+  "description": "单球场详情 — 校验删除+距离计算",
+  "main": "index.ts",
+  "dependencies": {
+    "wx-server-sdk": "latest"
+  }
+}

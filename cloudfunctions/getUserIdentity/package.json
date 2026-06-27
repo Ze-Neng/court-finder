@@ -1,0 +1,9 @@
+{
+  "name": "getUserIdentity",
+  "version": "1.0.0",
+  "description": "匿名身份标识 — code → openid_hash",
+  "main": "index.ts",
+  "dependencies": {
+    "wx-server-sdk": "latest"
+  }
+}

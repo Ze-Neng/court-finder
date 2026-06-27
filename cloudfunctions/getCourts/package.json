@@ -1,0 +1,9 @@
+{
+  "name": "getCourts",
+  "version": "1.0.0",
+  "description": "球场列表查询 — 地理空间 + 筛选 + 排序 + 分页",
+  "main": "index.ts",
+  "dependencies": {
+    "wx-server-sdk": "latest"
+  }
+}

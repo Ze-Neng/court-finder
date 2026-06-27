@@ -1,0 +1,41 @@
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  height: 88rpx;
+  padding: 0 24rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #eee;
+}
+
+.nav-left {
+  width: 80rpx;
+  flex-shrink: 0;
+}
+
+.nav-back-icon {
+  font-size: 48rpx;
+  font-weight: 300;
+  color: #333;
+  line-height: 1;
+}
+
+.nav-title {
+  flex: 1;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nav-right {
+  width: 80rpx;
+  flex-shrink: 0;
+}

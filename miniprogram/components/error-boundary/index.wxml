@@ -1,0 +1,5 @@
+<view class="error">
+  <view class="error-icon">{{displayIcon}}</view>
+  <view class="error-message">{{displayMessage}}</view>
+  <button class="error-btn" bindtap="onRetryTap">{{retryText}}</button>
+</view>

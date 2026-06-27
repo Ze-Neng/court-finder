@@ -1,0 +1,9 @@
+<view class="nav-bar" style="background-color: {{backgroundColor}};">
+  <view class="nav-left" wx:if="{{showBack}}" bindtap="onBackTap">
+    <text class="nav-back-icon">‹</text>
+  </view>
+  <view class="nav-title">{{title}}</view>
+  <view class="nav-right"></view>
+</view>
+<!-- 占位，避免内容被固定导航栏遮挡 -->
+<view style="height: 88rpx;" wx:if="{{showBack || title}}"></view>

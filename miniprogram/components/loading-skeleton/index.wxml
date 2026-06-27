@@ -1,0 +1,26 @@
+<!-- 卡片骨架 -->
+<view wx:if="{{type === 'card'}}" class="skeleton-card">
+  <view class="sk-block sk-card-img"></view>
+  <view class="sk-line sk-line--title"></view>
+  <view class="sk-line sk-line--short"></view>
+</view>
+
+<!-- 列表骨架 -->
+<view wx:elif="{{type === 'list'}}" class="skeleton-list">
+  <view class="sk-list-item" wx:for="{{rows}}" wx:key="*this">
+    <view class="sk-block sk-list-left"></view>
+    <view class="sk-list-right">
+      <view class="sk-line sk-line--title"></view>
+      <view class="sk-line sk-line--short"></view>
+    </view>
+  </view>
+</view>
+
+<!-- 详情骨架 -->
+<view wx:elif="{{type === 'detail'}}" class="skeleton-detail">
+  <view class="sk-block sk-detail-hero"></view>
+  <view class="sk-line sk-line--lg"></view>
+  <view class="sk-line sk-line--md"></view>
+  <view class="sk-line sk-line--md"></view>
+  <view class="sk-line sk-line--short"></view>
+</view>

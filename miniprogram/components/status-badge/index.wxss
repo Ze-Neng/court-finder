@@ -1,0 +1,32 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6rpx 16rpx;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.badge--small {
+  padding: 2rpx 10rpx;
+  font-size: 20rpx;
+}
+
+/* 绿色 — 可前往 */
+.badge-green {
+  background-color: rgba(7, 193, 96, 0.12);
+  color: #07c160;
+}
+
+/* 橙色 — 需谨慎 */
+.badge-orange {
+  background-color: rgba(250, 157, 59, 0.12);
+  color: #fa9d3b;
+}
+
+/* 红色 — 不建议前往 */
+.badge-red {
+  background-color: rgba(238, 63, 63, 0.12);
+  color: #ee3f3f;
+}

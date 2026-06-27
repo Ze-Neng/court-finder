@@ -1,0 +1,9 @@
+{
+  "name": "getFavorites",
+  "version": "1.0.0",
+  "description": "查询用户收藏列表，自动清理失效收藏",
+  "main": "index.ts",
+  "dependencies": {
+    "wx-server-sdk": "latest"
+  }
+}

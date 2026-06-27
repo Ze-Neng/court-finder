@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/court-detail/index"
+    "pages/court-detail/index",
+    "pages/favorites/index"
   ],
   "window": {
     "navigationBarTitleText": "寻觅球场",
@@ -15,6 +16,7 @@
     "navigation-bar": "/components/navigation-bar/index",
     "loading-skeleton": "/components/loading-skeleton/index",
     "empty-state": "/components/empty-state/index",
-    "error-boundary": "/components/error-boundary/index"
+    "error-boundary": "/components/error-boundary/index",
+    "favorites-button": "/components/favorites-button/index"
   }
 }

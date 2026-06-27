@@ -1,0 +1,4 @@
+<view class="fav-btn {{isFavorited ? 'favorited' : ''}}" bindtap="onToggle">
+  <text class="fav-icon">{{isFavorited ? '♥' : '♡'}}</text>
+  <text class="fav-text">{{isFavorited ? '已收藏' : '收藏'}}</text>
+</view>

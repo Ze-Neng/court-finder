@@ -1,0 +1,36 @@
+.fav-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 120rpx;
+  height: 96rpx;
+  border-radius: 16rpx;
+  background: #f9f9f9;
+}
+
+.fav-btn.favorited {
+  background: rgba(238, 63, 63, 0.08);
+}
+
+.fav-icon {
+  font-size: 36rpx;
+  margin-bottom: 2rpx;
+}
+
+.fav-btn:not(.favorited) .fav-icon {
+  color: #999;
+}
+
+.fav-btn.favorited .fav-icon {
+  color: #ee3f3f;
+}
+
+.fav-text {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.fav-btn.favorited .fav-text {
+  color: #ee3f3f;
+}

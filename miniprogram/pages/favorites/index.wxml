@@ -1,0 +1,36 @@
+<navigation-bar title="我的收藏" showBack="{{true}}" />
+
+<block wx:if="{{loading}}">
+  <loading-skeleton type="list" count="4" />
+</block>
+
+<block wx:elif="{{error}}">
+  <error-boundary type="network" message="{{error}}" bind:retry="onRetry" />
+</block>
+
+<block wx:elif="{{list.length === 0}}">
+  <empty-state
+    title="暂无收藏球场"
+    description="收藏后可快速查看状态"
+    actionText="去找球场"
+    bind:action="onGoFind"
+  />
+</block>
+
+<block wx:else>
+  <scroll-view class="fav-list" scroll-y>
+    <view class="fav-item"
+          wx:for="{{list}}" wx:key="id"
+          bindtap="onItemTap" data-id="{{item.id}}">
+      <view class="fav-body">
+        <view class="fav-name">{{item.name}}</view>
+        <view class="fav-meta">
+          <status-badge status="{{item.status}}" size="small" />
+          <text class="fav-type">{{item.sportType}}</text>
+        </view>
+        <view class="fav-reason">{{item.statusReason}}</view>
+      </view>
+      <text class="fav-arrow">›</text>
+    </view>
+  </scroll-view>
+</block>

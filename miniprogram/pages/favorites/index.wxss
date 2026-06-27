@@ -1,0 +1,52 @@
+.fav-list {
+  height: calc(100vh - 88rpx);
+  padding: 0 24rpx;
+}
+
+.fav-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.fav-body {
+  flex: 1;
+  overflow: hidden;
+}
+
+.fav-name {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 8rpx;
+}
+
+.fav-meta {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+  margin-bottom: 4rpx;
+}
+
+.fav-type {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.fav-reason {
+  font-size: 22rpx;
+  color: #999;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fav-arrow {
+  font-size: 36rpx;
+  color: #ccc;
+  flex-shrink: 0;
+}

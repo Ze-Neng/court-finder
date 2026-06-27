@@ -1,4 +1,4 @@
-/**
+﻿/**
  * getCourts — 球场列表查询（最核心云函数）
  * 支持：地理空间查询 + 运动类型筛选 + 状态筛选 + 多字段排序 + 分页
  * 始终按 pilot_area_id 过滤，防止跨区域数据泄露
@@ -36,6 +36,8 @@ interface CourtCardData {
   distance: number | null
   dataSource: string
   isFavorited: boolean
+  latitude: number
+  longitude: number
 }
 
 interface GetCourtsResult {
@@ -197,6 +199,8 @@ export async function main(
       statusReason: doc.status_reason || '',
       distance: location ? doc._distance ?? null : null,
       dataSource: doc.data_source,
+      latitude: doc.location?.coordinates?.[1] ?? 0,
+      longitude: doc.location?.coordinates?.[0] ?? 0,
       isFavorited: false, // 收藏状态需单独查询
     }))
 

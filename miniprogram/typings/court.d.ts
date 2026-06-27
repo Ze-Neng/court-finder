@@ -80,6 +80,10 @@ export interface CourtMarkerData {
 /** 卡片展示数据 */
 export interface CourtCardData {
   id: string
+  /** 纬度（用于地图 Marker） */
+  latitude: number
+  /** 经度（用于地图 Marker） */
+  longitude: number
   name: string
   sportType: SportType
   status: CourtStatus

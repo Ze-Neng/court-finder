@@ -1,0 +1,137 @@
+<navigation-bar title="寻觅球场" showBack="{{false}}" />
+
+<!-- ====== 筛选栏 ====== -->
+<view class="filter-bar">
+  <scroll-view class="filter-scroll" scroll-x>
+    <view class="filter-chip {{filters.sportType === '' ? 'active' : ''}}"
+          data-type="" bindtap="onSportTypeSelect">全部</view>
+    <view class="filter-chip {{filters.sportType === 'basketball' ? 'active' : ''}}"
+          data-type="basketball" bindtap="onSportTypeSelect">篮球</view>
+    <view class="filter-chip {{filters.sportType === 'table_tennis' ? 'active' : ''}}"
+          data-type="table_tennis" bindtap="onSportTypeSelect">乒乓球</view>
+  </scroll-view>
+  <view class="filter-actions">
+    <view class="mode-toggle" bindtap="onToggleMode">
+      {{mode === 'map' ? '📋' : '🗺️'}}
+    </view>
+    <view class="filter-btn {{filterVisible ? 'active' : ''}}" bindtap="onToggleFilter">筛选</view>
+  </view>
+</view>
+
+<!-- ====== 加载状态 ====== -->
+<block wx:if="{{loading}}">
+  <loading-skeleton type="list" count="4" />
+</block>
+
+<!-- ====== 错误状态 ====== -->
+<block wx:elif="{{error}}">
+  <error-boundary type="network" message="{{error}}" bind:retry="onRetry" />
+</block>
+
+<!-- ====== 空状态 ====== -->
+<block wx:elif="{{courts.length === 0}}">
+  <empty-state title="暂无球场数据" description="当前区域暂无球场信息，请尝试扩大搜索范围" />
+</block>
+
+<!-- ====== 地图模式 ====== -->
+<block wx:else>
+  <view class="map-container" wx:if="{{mode === 'map'}}">
+    <map
+      id="homeMap"
+      class="home-map"
+      latitude="{{mapCenter.latitude}}"
+      longitude="{{mapCenter.longitude}}"
+      scale="{{mapScale}}"
+      markers="{{markers}}"
+      show-location="{{hasLocation}}"
+      bindregionchange="onMapRegionChange"
+      bindmarkertap="onMarkerTap"
+    />
+
+    <!-- 底部卡片面板 -->
+    <view class="bottom-sheet" wx:if="{{courts.length > 0}}">
+      <swiper
+        class="card-swiper"
+        current="{{currentIndex}}"
+        bindchange="onSwiperChange"
+        previous-margin="60rpx"
+        next-margin="60rpx"
+      >
+        <swiper-item wx:for="{{courts}}" wx:key="id">
+          <view class="court-card" bindtap="onCardTap">
+            <view class="card-name">{{item.name}}</view>
+            <view class="card-meta">
+              <status-badge status="{{item.status}}" size="small" />
+              <text class="card-type">{{item.sportType}}</text>
+              <text class="card-dist" wx:if="{{!hasLocation}}">--</text>
+              <text class="card-dist" wx:elif="{{item.distance !== null}}">
+                {{item.distance >= 1000 ? (item.distance / 1000).toFixed(1) + 'km' : item.distance + 'm'}}
+              </text>
+            </view>
+            <view class="card-reason">{{item.statusReason}}</view>
+          </view>
+        </swiper-item>
+      </swiper>
+
+      <!-- 未定位提示条 -->
+      <view class="location-hint" wx:if="{{!hasLocation}}" bindtap="onRequestLocation">
+        <text>启用定位后可按距离排序 ›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- ====== 列表模式 ====== -->
+  <view class="list-container" wx:else>
+    <scroll-view class="court-list" scroll-y>
+      <view class="list-item"
+            wx:for="{{courts}}" wx:key="id"
+            bindtap="onCardTap" data-id="{{item.id}}">
+        <view class="list-body">
+          <view class="list-name">{{item.name}}</view>
+          <view class="list-meta">
+            <status-badge status="{{item.status}}" size="small" />
+            <text class="list-type">{{item.sportType}}</text>
+          </view>
+          <view class="list-reason">{{item.statusReason}}</view>
+        </view>
+        <view class="list-dist-col">
+          <text wx:if="{{!hasLocation}}">--</text>
+          <text wx:elif="{{item.distance !== null}}">
+            {{item.distance >= 1000 ? (item.distance / 1000).toFixed(1) + 'km' : item.distance + 'm'}}
+          </text>
+        </view>
+        <text class="list-arrow">›</text>
+      </view>
+    </scroll-view>
+  </view>
+</block>
+
+<!-- ====== 筛选抽屉 ====== -->
+<view class="filter-overlay {{filterVisible ? 'show' : ''}}" catchtouchmove="true">
+  <view class="filter-mask" bindtap="onFilterClose"></view>
+  <view class="filter-panel">
+    <view class="filter-header">
+      <text class="filter-title">筛选</text>
+      <text class="filter-close" bindtap="onFilterClose">✕</text>
+    </view>
+
+    <view class="filter-section">
+      <view class="filter-label">球场状态</view>
+      <view class="filter-chips">
+        <view class="chip {{filters.statusGroup === '' ? 'chip-active' : ''}}"
+              data-group="" bindtap="onStatusGroupSelect">全部</view>
+        <view class="chip chip-go {{filters.statusGroup === 'go' ? 'chip-active' : ''}}"
+              data-group="go" bindtap="onStatusGroupSelect">可前往</view>
+        <view class="chip chip-caution {{filters.statusGroup === 'caution' ? 'chip-active' : ''}}"
+              data-group="caution" bindtap="onStatusGroupSelect">需谨慎</view>
+        <view class="chip chip-stop {{filters.statusGroup === 'stop' ? 'chip-active' : ''}}"
+              data-group="stop" bindtap="onStatusGroupSelect">不建议前往</view>
+      </view>
+    </view>
+
+    <view class="filter-actions">
+      <view class="filter-btn-reset" bindtap="onFilterReset">重置</view>
+      <view class="filter-btn-apply" bindtap="onFilterApply">查看结果</view>
+    </view>
+  </view>
+</view>
